@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6455626534188355456}
   - component: {fileID: 3178032790208431681}
   m_Layer: 0
-  m_Name: SnakePart
+  m_Name: SnakeTail
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
