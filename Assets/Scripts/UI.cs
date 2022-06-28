@@ -38,7 +38,7 @@ public class UI : MonoBehaviour
 
     public void RestartButton()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("GameScene");
         Time.timeScale = 1;
     }
 
