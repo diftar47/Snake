@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject snakeHead;
     [SerializeField] private GameObject snakeTailPrefab;
 
+    [SerializeField] private float speed = 0.4f;
+
     private List<GameObject> segments = new List<GameObject>();
 
     private void Start()
@@ -38,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
                 segments[i].transform.position = segments[i -1].transform.position;
             }
             snakeHead.transform.Translate(Vector3.up * 1);
-            yield return new WaitForSeconds(0.4f);
+            yield return new WaitForSeconds(speed);
         }
     }
 
@@ -46,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
     {
         GameObject lastSegment = Instantiate(snakeTailPrefab);
         lastSegment.transform.position = segments[segments.Count - 1].transform.position;
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(speed);
         segments.Add(lastSegment);
     }
 
