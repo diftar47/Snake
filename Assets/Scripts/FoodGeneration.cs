@@ -7,7 +7,6 @@ public class FoodGeneration : MonoBehaviour
 
     private Vector3 minRange = new Vector3(-16, 8, 0);
     private Vector3 maxRange = new Vector3(16, -8, 0);
-    private Vector3 eatPosition;
 
     [SerializeField] private GameObject foodPrefab;
 
@@ -16,17 +15,20 @@ public class FoodGeneration : MonoBehaviour
 
     private void Start()
     {
-        MathUtilities.Random(ref eatPosition, minRange, maxRange);
-        foodPrefab.transform.position = eatPosition;
+        ChangeFoodPosition();
         Score = 0;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        MathUtilities.Random(ref eatPosition, minRange, maxRange);
-        foodPrefab.transform.position = eatPosition;
+        ChangeFoodPosition();
         Score++;
         Debug.Log("Eating " + Score);
         Eating?.Invoke();
+    }
+
+    private void ChangeFoodPosition()
+    {
+        foodPrefab.transform.position = MathUtilities.Random(minRange, maxRange, true);
     }
 }
