@@ -8,6 +8,7 @@ public class UI : MonoBehaviour
 {
     public GameObject deadCanvas;
     public GameObject mainCanvas;
+    public GameObject pauseCanvas;
     [SerializeField] private Text scoreText;
     [SerializeField] private Text scoreText2;
 
@@ -16,12 +17,19 @@ public class UI : MonoBehaviour
     private void Start()
     {
         deadCanvas.SetActive(false);
+        pauseCanvas.SetActive(false);
         mainCanvas.SetActive(true);
 
         scoreText.text = string.Format("Score: {0}", FoodGeneration.Score);
 
         WallTriger.DeadEvent.AddListener(Dead);
         FoodGeneration.Eating.AddListener(Eating);
+    }
+
+    private void Update()
+    {
+        if ((Input.GetKeyDown(KeyCode.Escape)) && (deadCanvas.activeSelf == false))
+            Pause();
     }
 
     private void Eating()
@@ -36,6 +44,12 @@ public class UI : MonoBehaviour
         scoreText2.text = string.Format("Score: {0}", FoodGeneration.Score);
     }
 
+    public void Pause()
+    {
+        Time.timeScale = 0;
+        pauseCanvas.SetActive(true);
+    }
+
     public void RestartButton()
     {
         SceneManager.LoadScene("GameScene");
@@ -46,6 +60,12 @@ public class UI : MonoBehaviour
     {
         Debug.Log("Quit");
         Application.Quit();
+    }
+
+    public void Resume()
+    {
+        Time.timeScale = 1;
+        pauseCanvas.SetActive(false);
     }
 
 }
