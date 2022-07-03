@@ -49,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
         GameObject lastSegment = Instantiate(snakeTailPrefab);
         lastSegment.transform.position = segments[segments.Count - 1].transform.position;
         yield return new WaitForSeconds(speed);
+        lastSegment.GetComponent<BoxCollider2D>().enabled = true;
         segments.Add(lastSegment);
     }
 
