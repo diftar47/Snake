@@ -9,8 +9,11 @@ public class UI : MonoBehaviour
     public GameObject deadCanvas;
     public GameObject mainCanvas;
     public GameObject pauseCanvas;
+    
     [SerializeField] private Text scoreText;
     [SerializeField] private Text scoreText2;
+
+    [SerializeField] private AudioSource eatingSource;
 
     //FoodGeneration foodGeneration = new FoodGeneration();
 
@@ -35,6 +38,7 @@ public class UI : MonoBehaviour
     private void Eating()
     {
         scoreText.text = string.Format("Score: {0}", FoodGeneration.Score);
+        eatingSource.Play();
     }
 
     public void Dead()
