@@ -14,6 +14,7 @@ public class UI : MonoBehaviour
     [SerializeField] private Text scoreText2;
 
     [SerializeField] private AudioSource eatingSource;
+    [SerializeField] private AudioSource backgroundMusic;
 
     //FoodGeneration foodGeneration = new FoodGeneration();
 
@@ -33,6 +34,14 @@ public class UI : MonoBehaviour
     {
         if ((Input.GetKeyDown(KeyCode.Escape)) && (deadCanvas.activeSelf == false))
             Pause();
+        
+        if(deadCanvas.activeSelf == true)
+            backgroundMusic.Stop();
+
+        if (pauseCanvas.activeSelf == true)
+            backgroundMusic.volume = 0.1f;
+        else
+            backgroundMusic.volume = 1;
     }
 
     private void Eating()

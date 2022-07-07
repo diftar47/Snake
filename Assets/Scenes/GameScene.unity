@@ -8990,6 +8990,7 @@ MonoBehaviour:
   scoreText: {fileID: 528348556}
   scoreText2: {fileID: 824778990}
   eatingSource: {fileID: 810007607}
+  backgroundMusic: {fileID: 1061638864}
 --- !u!1 &1523673789
 GameObject:
   m_ObjectHideFlags: 0
